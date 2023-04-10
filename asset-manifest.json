@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/api-online-store/static/css/main.4185fa2f.css",
+    "main.js": "/api-online-store/static/js/main.2e1eb19d.js",
+    "static/js/787.1671ce4b.chunk.js": "/api-online-store/static/js/787.1671ce4b.chunk.js",
+    "static/media/shopping-bag.svg": "/api-online-store/static/media/shopping-bag.a688874f6f1507316bdfa420328a4a53.svg",
+    "index.html": "/api-online-store/index.html",
+    "static/media/favorite.svg": "/api-online-store/static/media/favorite.97cfbc83403fec05ecabb8a691478751.svg",
+    "static/media/trash-can.svg": "/api-online-store/static/media/trash-can.e09cbc7fbe18e1e31d9f68182223c5bb.svg",
+    "static/media/my-account.svg": "/api-online-store/static/media/my-account.6567464f62b195d13f0606e7d1549aae.svg",
+    "main.4185fa2f.css.map": "/api-online-store/static/css/main.4185fa2f.css.map",
+    "main.2e1eb19d.js.map": "/api-online-store/static/js/main.2e1eb19d.js.map",
+    "787.1671ce4b.chunk.js.map": "/api-online-store/static/js/787.1671ce4b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4185fa2f.css",
+    "static/js/main.2e1eb19d.js"
+  ]
+}
