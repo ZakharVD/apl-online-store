@@ -22,7 +22,7 @@ function Home() {
         <span className="text-2xl new:text-3xl md:text-4xl lg:text-5xl font-bold">25% OFF</span>
         on your first purchase
       </div>
-      <div className="w-[60%] lg:w-[calc(100%-300px)] h-[150px] flex justify-center items-center">
+      <div className="w-[60%] lg:w-[calc(100%-300px)] h-[125px] flex justify-center items-center">
         <button onClick={shopNowHandler} className="z-10 text-center rounded-xl p-5 text-white bg-black text-md font-medium new:w-[150px] new:h-[80px]">
           SHOP NOW
         </button>
