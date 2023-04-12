@@ -16,7 +16,7 @@ const CartItem = ({ cartItem }) => {
         <span>{quantity} x ${price}</span>
       </div>
       <div className="w-[10%] flex justify-center items-center">
-        <span onClick={clearItemHandler} className="text-lg">&#10005;</span>
+        <span onClick={clearItemHandler} className="text-lg cursor-pointer">&#10005;</span>
       </div>
     </div>
   );
