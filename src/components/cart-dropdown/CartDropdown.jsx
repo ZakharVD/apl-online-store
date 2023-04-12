@@ -29,7 +29,7 @@ const CartDropdown = () => {
     toggleIsCartOpen();
   };
   return (
-      <div className="absolute w-[100%] sm:w-[340px] h-[50%] flex flex-col justify-between p-[10px] bg-white top-[72px] right-0 z-50 sm:rounded-lg">
+      <div className="absolute w-[100%] sm:w-[340px] h-[50%] flex flex-col justify-between p-[10px] bg-lightgrey top-[72px] right-0 z-50 sm:rounded-lg">
         <div className="h-[82%] flex flex-col overflow-scroll">
           {cartItems.length ? (
             cartItems.map((item) => <CartItem key={item.id} cartItem={item} />)

@@ -7,6 +7,7 @@ import MenShop from "./routes/shop/MenShop";
 import WomenShop from "./routes/shop/WomenShop";
 import CheckoutPage from "./routes/checkout/CheckoutPage";
 import FavoritePage from "./routes/favorite/FavoritePage";
+import MainDivision from "./main-division/main-division";
 import "./App.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <Routes>
       <Route path="/" element={<NavBar />}>
         <Route index element={<Home />} />
+        <Route path="shop" element={<MainDivision/>} />
         <Route path="sign-in" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="men-shop/*" element={<MenShop/>}/>

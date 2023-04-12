@@ -37,7 +37,7 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="bg-green">
+      <nav className="bg-mainbg">
         <div className="flex flex-row justify-between items-center mx-auto p-4">
           <Link to="/" className="font-logo text-[1.5rem] text-black">
             APL

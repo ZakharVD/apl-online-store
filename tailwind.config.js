@@ -3,9 +3,13 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
+  mode: 'jit',
   theme: {
     extend: {
-      display: ["group-hover"]
+      display: ["group-hover"],
+      colors: {
+        "brand-gradient": "linear-gradient(90deg, #337cd5 0%, #66db9f 100%)"
+      }
     },
     fontFamily: {
       'heading': ['Sawarabi Mincho'],
@@ -18,18 +22,18 @@ module.exports = {
       'green': '#9CCD62',
       'red': '#E54640',
       'lightgrey': '#E0E0E0',
-      'blue': '#4285F4'
-    },
-    backgroundImage: {
-      'athlete': "https://i.pinimg.com/564x/c0/5c/da/c05cdab1aedd7d248b1f3f43485e9ab8.jpg"
+      'blue': '#4285F4',
+      'mainbg': 'whitesmoke',
+      'orange': '#FF6A18'
     },
     screens: {
       'sm': '380px',
       'new': '480px',
       'md': '660px',
       'lg': '810px',
+      'formain': '1000px',
       'xl': '1330px'
-    }
+    },
   },
   plugins: [],
 }
