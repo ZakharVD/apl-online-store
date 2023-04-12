@@ -34,7 +34,7 @@ const Category = ({ productsToDisplay }) => {
           type="search"
           onChange={onChangeHandler}
           placeholder="Search products"
-          className="w-[100%] h-[35px] p-[7px] bg-lightgrey rounded-md"
+          className="w-[100%] h-[35px] p-[7px] bg-lightgrey rounded-sm md:rounded-md"
         />
       </div>
       <div className="flex flex-row justify-center flex-wrap max-w-[700px] m-auto">
