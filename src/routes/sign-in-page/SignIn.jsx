@@ -8,6 +8,7 @@ import {
 import FormInput from "../../components/form-input-field/FormInput";
 import { UserContext } from "../../context/UserContext";
 
+// creating default empty form fields to use in form reset function / default state
 const defaultFormFields = {
   email: "",
   password: "",
@@ -23,7 +24,7 @@ const SignIn = () => {
   };
 
 
- // redirect if authenticated function
+ // function to redirect to main page if user has authenticated 
  const { currentUser } = useContext(UserContext);
  const redirect = useNavigate();
 

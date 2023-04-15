@@ -10,24 +10,24 @@ const CartDropdown = () => {
   const { cartItems, isCartOpen, setIsCartOpen } = useContext(CartContext);
   // const { currentUser } = useContext(UserContext);
   // const { configAlert, setMessage } = useContext(AlertContext);
-  // toggle cart window
+  
+  // handler function to to toggle cart dropdown on click by setting the value by its opposite 
   const toggleIsCartOpen = () => {
     setIsCartOpen(!isCartOpen);
   };
 
-  //ALERT CONFIG
-  // determine path
+  // handler function to redirect to chackout page ONLY if the user added at least one item to cart, IF NOT alert user
   const navigate = useNavigate();
   const goToCheckoutHandler = () => {
     if (cartItems.length === 0) {
       alert('add item to cart')
-    // } else if (!currentUser) {
-    //   navigate("sign-in");
+      navigate("sign-in");
     } else {
       navigate("/checkout");
     }
     toggleIsCartOpen();
   };
+  
   return (
       <div className="absolute w-[100%] sm:w-[340px] h-[50%] flex flex-col justify-between p-[10px] bg-lightgrey top-[72px] right-0 z-50 sm:rounded-lg">
         <div className="h-[82%] flex flex-col overflow-scroll">

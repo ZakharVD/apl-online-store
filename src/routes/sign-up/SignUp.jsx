@@ -7,6 +7,7 @@ import {
 import FormInput from "../../components/form-input-field/FormInput";
 import { UserContext } from "../../context/UserContext";
 
+// creating an object that stores default form fields
 const defaultFormFields = {
   displayName: "",
   email: "",
@@ -20,15 +21,18 @@ const SignUp = () => {
 
   const { setCurrentUser } = useContext(UserContext);
 
+  // function to reset the form fields
   const resetForm = () => {
     setFormFields(defaultFormFields);
   };
-
+  
+  // handler function to update the state when input changes
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
 
+  // handler function to check user data for match / already registered, add to Firebase, set current user in state, and reset form
   const onSubmitHandler = async (event) => {
     event.preventDefault();
 

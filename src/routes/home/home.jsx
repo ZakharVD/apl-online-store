@@ -4,6 +4,7 @@ import shoe from "../../assets/shoe.jpg";
 
 function Home() {
   const redirect = useNavigate();
+  // handler function to navigate to shopping page
   const shopNowHandler = () => {
     redirect('shop');
   }

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 const MainCategoryItem = ({ category }) => {
   const { title, route } = category;
   const navigate = useNavigate();
+  // handler function to dinamically detemite the route for mens or womens catalog
   const onNavigateHandler = () => navigate(route);
 
   return (

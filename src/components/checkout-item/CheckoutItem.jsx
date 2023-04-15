@@ -4,8 +4,11 @@ import { CartContext } from "../../context/CartContext";
 const CheckoutItem = ({cartItem}) => {
     const { name, quantity, imageUrl, price } = cartItem;
     const { addItemToCart, removeItemFromCart, clearItemFromCart } = useContext(CartContext);
+    // handler function to completerly remove item from cart
     const clearItemHandler = () => clearItemFromCart(cartItem);
+    // handler function to increase the items count
     const incrementHandler = () => addItemToCart(cartItem);
+    // handler function to decrease the items count
     const decrementHandler = () => removeItemFromCart(cartItem);
     return (
         <div className="w-[100%] flex items-center my-[7px] bg-lightgrey">

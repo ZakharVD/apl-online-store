@@ -9,7 +9,7 @@ const addToFavoriteHelper = (favoriteItems, itemToAdd) => {
     }
     return [...favoriteItems, {...itemToAdd}];
 }
-
+// helper function to remove the product from favorites page
 const removeItemHelper = (favoriteItems, itemToRemove) => {
     return favoriteItems.filter((favItem) => favItem.id !== itemToRemove.id)
 }

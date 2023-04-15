@@ -9,22 +9,22 @@ import { ReactComponent as AccountIcon } from "../../assets/my-account.svg";
 import { ReactComponent as FavoriteIcon } from "../../assets/favorite.svg";
 
 const NavBar = () => {
-  // for dropdown
+  // creating state to keep track whether the account icon is toggled
   const [isOpen, setIsOpen] = useState(false);
-  // for user context
+  // destructure current user info to change 'sign in' to 'sign out' based on the value
   const { currentUser } = useContext(UserContext);
-  // for cart context
+  // destructuring the isCartOpen to determine whenter to show the dropdown with cart items
   const { isCartOpen } = useContext(CartContext);
-  // toggle account icon
+  // function toggle account icon
   const toggleAcc = () => {
     setIsOpen((prev) => !prev);
   };
-  //sign out user
+  // handler function to sign out user when the button is clicked
   const onSignOutHandler = () => {
     signOutUser();
     toggleAcc();
   };
-  // navigate to favorite page
+  // handler function to navigate user to favorite page ONLY if signed in, IF NOT alert user AND redirect to sign in page
   const navigate = useNavigate();
   const favoriteHandler = () => {
     if (!currentUser) {

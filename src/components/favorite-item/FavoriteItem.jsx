@@ -7,9 +7,13 @@ const FavoriteItem = ({ product }) => {
   const { name, imageUrl, price } = product;
   const { addItemToCart } = useContext(CartContext);
   const { removeItemFromFavorite } = useContext(FavoriteContext);
-
+  // handler function to remove item from favorites list
   const clearItemHandler = () => removeItemFromFavorite(product);
-  const addToCartHandler = () => addItemToCart(product);
+  // handler function to move favorite item to cart and remove from favorites
+  const addToCartHandler = () => {
+    addItemToCart(product);
+    removeItemFromFavorite(product);
+  }
   
   return (
     <div className="bg-lightgrey w-[150px] md:w-[220px] h-[250px] md:h-[330px] flex flex-col items-center m-[5px] rounded relative">

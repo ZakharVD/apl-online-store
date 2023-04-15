@@ -4,8 +4,9 @@ import ProductCard from "../../components/product-card/ProductCard";
 
 const Category = ({ productsToDisplay }) => {
   const { category } = useParams();
-  console.log("component rendered");
+  // console.log("component rendered");
 
+  // mapping over received products and store only the one where title matches the URL Route param (its name is same as title)
   let finalProducts;
   productsToDisplay.map((prod) => {
     if (prod.title === category) {
@@ -13,13 +14,18 @@ const Category = ({ productsToDisplay }) => {
     }
     return finalProducts;
   });
+
+  // creating a state for search bar
   const [searchField, setSearchField] = useState("");
+  // creating a state to store the products based on search state (default is all products in this category)
   const [filteredProducts, setFilteredProducts] = useState(finalProducts.items);
 
+  // function to upadate the search state whenever the search bar input changes, and lowercasing it to prevent case-sensative search
   const onChangeHandler = (event) => {
     setSearchField(event.target.value.toLowerCase());
   };
 
+  // using useEffect hook to re-render the right products ONLY when the catalog or search input value changes
   useEffect(() => {
     const newFilteredProducts = finalProducts.items.filter((pd) =>
       pd.name.toLowerCase().includes(searchField.toLowerCase())
