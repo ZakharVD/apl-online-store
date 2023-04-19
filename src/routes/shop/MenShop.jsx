@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 import CategoriesPreview from "../../components/categories-preview/CategoriesPreview";
 import Category from "../category/Category";
-import { useContext } from "react";
-import { ProductContext } from "../../context/ProductContext";
+import { selectProductsInfo } from "../../store/products/products.selector";
 
 // map over product and return repeated elements !!!
 const MenShop = () => {
-  const { productsInfo } = useContext(ProductContext);
+  const productsInfo = useSelector(selectProductsInfo);
   const menProducts = productsInfo.men;
   return (
       <Routes>

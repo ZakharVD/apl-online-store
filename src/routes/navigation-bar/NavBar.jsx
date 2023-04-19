@@ -1,8 +1,9 @@
 import { Outlet, Link, useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../store/user/user.selector";
 import { signOutUser } from "../../utils/firebase/firebase";
-import { CartContext } from "../../context/CartContext";
+import { selectIsCartOpen } from "../../store/cart/cart.selector";
 import CartIcon from "../../components/cart-icon/CartIcon";
 import CartDropdown from "../../components/cart-dropdown/CartDropdown";
 import { ReactComponent as AccountIcon } from "../../assets/my-account.svg";
@@ -11,24 +12,29 @@ import { ReactComponent as FavoriteIcon } from "../../assets/favorite.svg";
 const NavBar = () => {
   // creating state to keep track whether the account icon is toggled
   const [isOpen, setIsOpen] = useState(false);
-  // destructure current user info to change 'sign in' to 'sign out' based on the value
-  const { currentUser } = useContext(UserContext);
+
+  // getting current user info from redux to change 'sign in' to 'sign out' based on the value
+  const currentUser = useSelector(selectCurrentUser);
+
   // destructuring the isCartOpen to determine whenter to show the dropdown with cart items
-  const { isCartOpen } = useContext(CartContext);
+  const isCartOpen = useSelector(selectIsCartOpen);
+
   // function toggle account icon
   const toggleAcc = () => {
     setIsOpen((prev) => !prev);
   };
+
   // handler function to sign out user when the button is clicked
   const onSignOutHandler = () => {
     signOutUser();
     toggleAcc();
   };
+  
   // handler function to navigate user to favorite page ONLY if signed in, IF NOT alert user AND redirect to sign in page
   const navigate = useNavigate();
   const favoriteHandler = () => {
     if (!currentUser) {
-      alert("You must be signed in to view favourites");
+      alert("You must be signed in to view favorites");
       navigate("sign-in");
     } else {
       navigate("/favorite");

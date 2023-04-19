@@ -1,18 +1,31 @@
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
-import { FavoriteContext } from "../../context/FavoriteContext";
+// External imports
+import { useDispatch, useSelector } from "react-redux";
+// Redux imports
+import { addItemToCart } from "../../store/cart/cart.action";
+import { removeItemFromFavorite } from "../../store/favorite/favorite.action";
+import { selectCartItems } from "../../store/cart/cart.selector";
+import { selectFavoriteItems } from "../../store/favorite/favorite.selector";
+// Other imports
 import { ReactComponent as TrashCan} from "../../assets/trash-can.svg"
 
 const FavoriteItem = ({ product }) => {
   const { name, imageUrl, price } = product;
-  const { addItemToCart } = useContext(CartContext);
-  const { removeItemFromFavorite } = useContext(FavoriteContext);
+  
+  //initialize dispathc
+  const dispatch = useDispatch();
+
+  // select cartItems from Redux to pass to function
+  const cartItems = useSelector(selectCartItems);
+  // select favoriteItems from Redux to pass to function
+  const favoriteItems = useSelector(selectFavoriteItems);
+
   // handler function to remove item from favorites list
-  const clearItemHandler = () => removeItemFromFavorite(product);
+  const clearItemHandler = () => dispatch(removeItemFromFavorite(favoriteItems, product));
+
   // handler function to move favorite item to cart and remove from favorites
   const addToCartHandler = () => {
-    addItemToCart(product);
-    removeItemFromFavorite(product);
+    dispatch(addItemToCart(cartItems, product));
+    dispatch(removeItemFromFavorite(favoriteItems, product));
   }
   
   return (

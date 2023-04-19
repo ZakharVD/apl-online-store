@@ -1,12 +1,19 @@
-import { useContext, useEffect } from "react";
+// External imports
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FavoriteContext } from "../../context/FavoriteContext";
-import { UserContext } from "../../context/UserContext";
+import { useSelector } from "react-redux";
+// Redux imports
+import { selectCurrentUser } from "../../store/user/user.selector";
+import { selectFavoriteItems } from "../../store/favorite/favorite.selector";
+// Other imports
 import FavoriteItem from "../../components/favorite-item/FavoriteItem";
 
 const FavoritePage = () => {
-  const { favoriteItems } = useContext(FavoriteContext);
-  const { currentUser } = useContext(UserContext);
+  // Getting state values from Redux
+  const favoriteItems = useSelector(selectFavoriteItems);
+  const currentUser = useSelector(selectCurrentUser);
+  
+  // initialize redirect
   const redirect = useNavigate();
 
   // using useEffect hook to disallow user to navigate to favorite page if not signed in

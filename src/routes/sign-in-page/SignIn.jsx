@@ -1,12 +1,13 @@
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   signInWithGoogle,
   signInUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase";
 import FormInput from "../../components/form-input-field/FormInput";
-import { UserContext } from "../../context/UserContext";
+import { selectCurrentUser } from "../../store/user/user.selector";
 
 // creating default empty form fields to use in form reset function / default state
 const defaultFormFields = {
@@ -25,7 +26,7 @@ const SignIn = () => {
 
 
  // function to redirect to main page if user has authenticated 
- const { currentUser } = useContext(UserContext);
+  const currentUser = useSelector(selectCurrentUser)
  const redirect = useNavigate();
 
  const redirectUser = () => {

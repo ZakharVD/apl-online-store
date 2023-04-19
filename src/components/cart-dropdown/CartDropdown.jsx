@@ -1,19 +1,17 @@
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
-// import { UserContext } from "../../context/UserContext";
-// import { AlertContext } from "../../context/AlertContext";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CartItem from "../cart-item/CartItem";
-// import Alert from "../alert/Alert";
+import { selectCartItems, selectIsCartOpen } from "../../store/cart/cart.selector";
+import { setIsCartOpen } from "../../store/cart/cart.action";
 
 const CartDropdown = () => {
-  const { cartItems, isCartOpen, setIsCartOpen } = useContext(CartContext);
-  // const { currentUser } = useContext(UserContext);
-  // const { configAlert, setMessage } = useContext(AlertContext);
-  
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
+  const isCartOpen = useSelector(selectIsCartOpen)
+
   // handler function to to toggle cart dropdown on click by setting the value by its opposite 
   const toggleIsCartOpen = () => {
-    setIsCartOpen(!isCartOpen);
+    dispatch(setIsCartOpen(!isCartOpen));
   };
 
   // handler function to redirect to chackout page ONLY if the user added at least one item to cart, IF NOT alert user
@@ -21,7 +19,6 @@ const CartDropdown = () => {
   const goToCheckoutHandler = () => {
     if (cartItems.length === 0) {
       alert('add item to cart')
-      navigate("sign-in");
     } else {
       navigate("/checkout");
     }

@@ -1,11 +1,13 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase";
 import FormInput from "../../components/form-input-field/FormInput";
-import { UserContext } from "../../context/UserContext";
+// import { UserContext } from "../../context/UserContext";
+import { setCurrentUser } from "../../store/user/user.action";
 
 // creating an object that stores default form fields
 const defaultFormFields = {
@@ -19,7 +21,7 @@ const SignUp = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
-  const { setCurrentUser } = useContext(UserContext);
+  const dispatch = useDispatch();
 
   // function to reset the form fields
   const resetForm = () => {
@@ -46,7 +48,7 @@ const SignUp = () => {
         email,
         password
       );
-      setCurrentUser(user);
+      dispatch(setCurrentUser(user));
 
       await createUserDocumentFromAuth(user, { displayName });
       resetForm();

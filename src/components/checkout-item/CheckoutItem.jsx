@@ -1,15 +1,18 @@
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
+import { useDispatch, useSelector } from "react-redux";
+import { clearItemFromCart, removeItemFromCart, addItemToCart } from "../../store/cart/cart.action";
+import { selectCartItems } from "../../store/cart/cart.selector";
 
 const CheckoutItem = ({cartItem}) => {
     const { name, quantity, imageUrl, price } = cartItem;
-    const { addItemToCart, removeItemFromCart, clearItemFromCart } = useContext(CartContext);
+    const dispatch = useDispatch();
+    const cartItems = useSelector(selectCartItems);
     // handler function to completerly remove item from cart
-    const clearItemHandler = () => clearItemFromCart(cartItem);
+    const clearItemHandler = () => dispatch(clearItemFromCart(cartItems, cartItem));
     // handler function to increase the items count
-    const incrementHandler = () => addItemToCart(cartItem);
+    const incrementHandler = () => dispatch(addItemToCart(cartItems, cartItem));
     // handler function to decrease the items count
-    const decrementHandler = () => removeItemFromCart(cartItem);
+    const decrementHandler = () => dispatch(removeItemFromCart(cartItems, cartItem));
+    
     return (
         <div className="w-[100%] flex items-center my-[7px] bg-lightgrey">
             <div className="w-[20%] new:w-[23%]">

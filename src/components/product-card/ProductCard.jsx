@@ -1,23 +1,33 @@
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
-import { UserContext } from "../../context/UserContext";
-import { FavoriteContext } from "../../context/FavoriteContext";
+// External imports
+import { useSelector, useDispatch } from "react-redux";
+// Redux imports
+import { selectCurrentUser } from "../../store/user/user.selector";
+import { selectCartItems } from "../../store/cart/cart.selector";
+import { selectFavoriteItems } from "../../store/favorite/favorite.selector";
+import { addItemToCart } from "../../store/cart/cart.action";
+import { addItemsToFavorite } from "../../store/favorite/favorite.action";
+// Other imports
 import { ReactComponent as FavoriteIcon } from "../../assets/favorite.svg";
+
+
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;
-  const { addItemToCart } = useContext(CartContext);
-  const { addItemsToFavorite, favoriteItems } = useContext(FavoriteContext);
-  const { currentUser } = useContext(UserContext);
+  // initialize dispatch
+  const dispatch = useDispatch();
+  // Getting value from Redux
+  const cartItems = useSelector(selectCartItems);
+  const currentUser = useSelector(selectCurrentUser);
+  const favoriteItems = useSelector(selectFavoriteItems);
 
   // handler function to add product to cart when the appropriate button is clicked
-  const addToCartHandler = () => addItemToCart(product);
+  const addToCartHandler = () => dispatch(addItemToCart(cartItems, product));
 
   // helper function to add product to favourite ONLY is user is signed in, if he is not, alert user to sign in
   const addToFavoriteHandler = () => {
     if (!currentUser) {
       alert("You must sign in first to save products");
     } else {
-      addItemsToFavorite(product);
+      dispatch(addItemsToFavorite(favoriteItems, product));
     }
   };
 
