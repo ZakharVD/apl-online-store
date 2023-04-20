@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {
@@ -24,14 +24,13 @@ const SignIn = () => {
     setFormFields(defaultFormFields);
   };
 
+  // function to redirect to main page if user has authenticated
+  const currentUser = useSelector(selectCurrentUser);
+  const redirect = useNavigate();
 
- // function to redirect to main page if user has authenticated 
-  const currentUser = useSelector(selectCurrentUser)
- const redirect = useNavigate();
-
- const redirectUser = () => {
-     redirect('/');
- };
+  const redirectUser = () => {
+    redirect("/");
+  };
 
   // sigh in with google function
   const onGoogleSignInHandler = async () => {
@@ -39,10 +38,9 @@ const SignIn = () => {
       await signInWithGoogle();
       redirectUser();
     } catch (err) {
-      console.log('error signing in with google')
+      console.log("error signing in with google");
     }
   };
-
 
   // log in user function
   const onSubmitHandler = async (event) => {
@@ -71,8 +69,6 @@ const SignIn = () => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
-
-
 
   return (
     <>

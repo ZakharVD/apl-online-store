@@ -1,17 +1,15 @@
-import { useDispatch, useSelector } from "react-redux";
-import { clearItemFromCart, removeItemFromCart, addItemToCart } from "../../store/cart/cart.action";
-import { selectCartItems } from "../../store/cart/cart.selector";
+import { useDispatch } from "react-redux";
+import { clearItemFromCart, removeItemFromCart, addItemToCart } from "../../store/cart/cart.reducer";
 
 const CheckoutItem = ({cartItem}) => {
     const { name, quantity, imageUrl, price } = cartItem;
     const dispatch = useDispatch();
-    const cartItems = useSelector(selectCartItems);
     // handler function to completerly remove item from cart
-    const clearItemHandler = () => dispatch(clearItemFromCart(cartItems, cartItem));
+    const clearItemHandler = () => dispatch(clearItemFromCart(cartItem));
     // handler function to increase the items count
-    const incrementHandler = () => dispatch(addItemToCart(cartItems, cartItem));
+    const incrementHandler = () => dispatch(addItemToCart(cartItem));
     // handler function to decrease the items count
-    const decrementHandler = () => dispatch(removeItemFromCart(cartItems, cartItem));
+    const decrementHandler = () => dispatch(removeItemFromCart(cartItem));
     
     return (
         <div className="w-[100%] flex items-center my-[7px] bg-lightgrey">

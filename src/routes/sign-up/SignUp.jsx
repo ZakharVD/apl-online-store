@@ -7,7 +7,7 @@ import {
 } from "../../utils/firebase/firebase";
 import FormInput from "../../components/form-input-field/FormInput";
 // import { UserContext } from "../../context/UserContext";
-import { setCurrentUser } from "../../store/user/user.action";
+import { setCurrentUser } from "../../store/user/user.reducer";
 
 // creating an object that stores default form fields
 const defaultFormFields = {

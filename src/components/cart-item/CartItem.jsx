@@ -1,10 +1,8 @@
 // External imports
 import { useSelector, useDispatch } from "react-redux";
 // Redux imports
-import { clearItemFromCart } from "../../store/cart/cart.action";
-import { addItemsToFavorite } from "../../store/favorite/favorite.action";
-import { selectCartItems } from "../../store/cart/cart.selector";
-import { selectFavoriteItems } from "../../store/favorite/favorite.selector";
+import { clearItemFromCart } from "../../store/cart/cart.reducer";
+import { addItemsToFavorite } from "../../store/favorite/favorite.reducer";
 import { selectCurrentUser } from "../../store/user/user.selector";
 // Other imports
 import { ReactComponent as FavoriteIcon } from "../../assets/favorite.svg";
@@ -12,8 +10,6 @@ import { ReactComponent as FavoriteIcon } from "../../assets/favorite.svg";
 const CartItem = ({ cartItem }) => {
   const { name, quantity, imageUrl, price } = cartItem;
   // getting values from redux
-  const cartItems = useSelector(selectCartItems);
-  const favoriteItems = useSelector(selectFavoriteItems);
   const currentUser = useSelector(selectCurrentUser);
   // initialize dispatch
   const dispatch = useDispatch();
@@ -23,12 +19,12 @@ const CartItem = ({ cartItem }) => {
     if (!currentUser) {
       alert('you must sign in first to save products')
     } else {
-      dispatch(addItemsToFavorite(favoriteItems, cartItem))
+      dispatch(addItemsToFavorite(cartItem))
     }
   };
   
   // handler function to remove item from cart 
-  const clearItemHandler = () => dispatch(clearItemFromCart(cartItems, cartItem));
+  const clearItemHandler = () => dispatch(clearItemFromCart(cartItem));
   
   return (
     <div className="w-[100%] flex h-[80px]">

@@ -15,8 +15,8 @@ import WomenShop from "./routes/shop/WomenShop";
 import CheckoutPage from "./routes/checkout/CheckoutPage";
 import FavoritePage from "./routes/favorite/FavoritePage";
 import MainDivision from "./main-division/main-division";
-import { setCurrentUser } from "./store/user/user.action";
-import { setProductsInfo } from "./store/products/products.action";
+import { setCurrentUser } from "./store/user/user.reducer";
+import { setProductsInfo } from "./store/products/products.reducer";
 import "./App.css";
 
 function App() {
