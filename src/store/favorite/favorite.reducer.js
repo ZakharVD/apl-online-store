@@ -16,9 +16,12 @@ const removeItemHelper = (favoriteItems, itemToRemove) => {
   return favoriteItems.filter((favItem) => favItem.id !== itemToRemove.id)
 }
 
+// defining initial state
 export const FAVORITE_INITIAL_STATE = {
   favoriteItems: [],
 };
+
+// REDUCER
 
 export const favoriteSlice = createSlice({
   name: 'favorite',

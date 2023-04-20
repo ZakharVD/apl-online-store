@@ -46,6 +46,8 @@ const clearFromCartHelper = (cartItems, productToClear) => {
   return cartItems.filter((cartItem) => cartItem.id !== productToClear.id);
 };
 
+// REDUCER
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState: CART_INITIAL_STATE,
